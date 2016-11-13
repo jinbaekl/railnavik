@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using uwpRNavi.Model;
 using Windows.Devices.Geolocation;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
@@ -24,6 +26,8 @@ namespace uwpRNavi
     /// </summary>
     public sealed partial class frameRealtime : Page
     {
+        ObservableCollection<SimpleStation> ocStation = new ObservableCollection<SimpleStation>();
+
         public frameRealtime()
         {
             this.InitializeComponent();
@@ -31,6 +35,7 @@ namespace uwpRNavi
 
         private async void Page_Loaded(object sender, RoutedEventArgs e)
         {
+            asbStation.ItemsSource = ocStation;
             var accessStatus = await Geolocator.RequestAccessAsync();
             if(accessStatus == GeolocationAccessStatus.Allowed)
             {
@@ -40,13 +45,34 @@ namespace uwpRNavi
                 // Carry out the operation.
                 Geoposition pos = await geolocator.GetGeopositionAsync();
 
-                await new MessageDialog((await Communication.GetNearestStation(pos.Coordinate.Point.Position)).ToString()).ShowAsync();
+                var stations = await Communication.GetNearestStation(pos.Coordinate.Point.Position);
+                if (stations != null)
+                {
+                    ocStation.Clear();
+                    foreach(var stn in stations.Children())
+                    {
+                        ocStation.Add(new SimpleStation()
+                        {
+                            Station_CD=(string)((Newtonsoft.Json.Linq.JProperty)stn).Value["Station_CD"],
+                            Station_NM_Kor =(string)((Newtonsoft.Json.Linq.JProperty)stn).Value["Station_NM_Kor"],
+                            distance=(int)((Newtonsoft.Json.Linq.JProperty)stn).Value["distance"]
+                        });
+                    }
+                }
             }
         }
 
         private void button_Click(object sender, RoutedEventArgs e)
         {
             Communication.Register();
+        }
+
+        private void asbStation_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if(asbStation.Text.Length == 0)
+            {
+                asbStation.IsSuggestionListOpen = true;
+            }
         }
     }
 }

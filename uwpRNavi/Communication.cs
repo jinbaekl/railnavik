@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 using System.Net.Http;
 using Newtonsoft.Json.Linq;
+using uwpRNavi.Model;
 
 namespace uwpRNavi
 {
@@ -83,16 +84,14 @@ namespace uwpRNavi
             }
         }
 
-        public static async Task<int> GetNearestStation(Windows.Devices.Geolocation.BasicGeoposition pos)
+        public static async Task<JToken> GetNearestStation(Windows.Devices.Geolocation.BasicGeoposition pos)
         {
             var resp = await Get(proc + string.Format("?do=gpsstn&regkey={0}&lat={1}&long={2}", regkey, pos.Latitude, pos.Longitude));
             if(resp.IsJson)
             {
-                return (int)resp.Json["result"];
+                return resp.Json["result"];
             }
-            return -1;
+            return null;
         }
-
-        
     }
 }
