@@ -17,7 +17,7 @@
                 <ColumnDefinition Width="0.3*"/>
                 <ColumnDefinition Width="0.7*"/>
             </Grid.ColumnDefinitions>
-            <Border Background="#FFF96927" Grid.ColumnSpan="2" Margin="-13,-10,-13,0"/>
+            <Border Background="#FFF96927" Grid.ColumnSpan="2" Margin="-13,-7,-13,0"/>
             <ToggleButton x:Name="btnSound" HorizontalAlignment="Right" Margin="30,30,0,30" Padding="10" Background="Transparent" Foreground="White" VerticalAlignment="Center">
                 <Viewbox Width="30">
                     <SymbolIcon Symbol="Volume"/>

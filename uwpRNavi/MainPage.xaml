@@ -125,7 +125,7 @@
                     <local:TabIconItem Label="노선도" Symbol="Map"/>
                 </PivotItem.Header>
                 <Grid>
-                    <WebView x:Name="wvLinemap" Margin="-15,-10,-15,-10"/>
+                    <WebView x:Name="wvLinemap" Margin="-15,-5,-15,-10"/>
                 </Grid>
             </PivotItem>
             <PivotItem>

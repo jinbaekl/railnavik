@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using uwpRNavi.Model;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -22,6 +23,9 @@ namespace uwpRNavi
     /// </summary>
     public sealed partial class frameSearch : Page
     {
+        public SimpleStation From { get; set; }
+        public SimpleStation To { get; set; }
+
         public frameSearch()
         {
             this.InitializeComponent();
@@ -40,6 +44,19 @@ namespace uwpRNavi
                 {
                     tpTime.Visibility = Visibility.Visible;
                 }
+            }
+        }
+
+        private async void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            if(StaticStore.LastNearStation != null && StaticStore.LastNearStation.Length > 0)
+            {
+                asbFrom.PlaceholderText = StaticStore.LastNearStation[0].Station_NM_Kor;
+            }
+            string[] alert = (await Communication.GetNotice()).Split(';');
+            if(alert.Length >= 3)
+            {
+                hbButton.Content = alert[2];
             }
         }
     }

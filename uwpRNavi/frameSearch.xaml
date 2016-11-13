@@ -5,7 +5,7 @@
     xmlns:local="using:uwpRNavi"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d">
+    mc:Ignorable="d" Loaded="Page_Loaded">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid.RowDefinitions>
@@ -21,10 +21,10 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <SymbolIcon Symbol="Volume" Margin="10"/>
-            <HyperlinkButton Grid.Column="1" Content="철도 공사 영향으로 지연 발생 중... 영향 받는 노선"/>
+            <HyperlinkButton x:Name="hbButton" Grid.Column="1" Content="로드 중..." NavigateUri="http://zermoth.net/railroad/logis/Notice.aspx?category=24"/>
         </Grid>
-        <AutoSuggestBox Grid.Row="1" Margin="10" Padding="10"/>
-        <AutoSuggestBox Grid.Row="2" Margin="10" Padding="10"/>
+        <AutoSuggestBox x:Name="asbFrom" Grid.Row="1" Margin="10" Padding="10"/>
+        <AutoSuggestBox x:Name="asbTo" Grid.Row="2" Margin="10" Padding="10"/>
         <Grid Grid.Row="3">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="0.3*"/>

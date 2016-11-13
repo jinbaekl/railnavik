@@ -7,6 +7,8 @@ using Newtonsoft.Json;
 using System.Net.Http;
 using Newtonsoft.Json.Linq;
 using uwpRNavi.Model;
+using System.Net;
+using System.Xml.Linq;
 
 namespace uwpRNavi
 {
@@ -94,6 +96,16 @@ namespace uwpRNavi
             return null;
         }
 
+        public static async Task<JToken> GetChosungOrKeywordStation(string chokey)
+        {
+            var resp = await Get(proc + string.Format("?do=findstn&regkey={0}&word={1}", regkey, WebUtility.UrlEncode(chokey)));
+            if (resp.IsJson)
+            {
+                return resp.Json["result"];
+            }
+            return null;
+        }
+
         public static async Task<SimpleLine[]> GetLineByStnCode(string code)
         {
             var resp = await Get(proc + string.Format("?do=stnline&regkey={0}&sid={1}", regkey, code));
@@ -110,6 +122,28 @@ namespace uwpRNavi
                 return lsSL.ToArray();
             }
             return null;
+        }
+
+        public static async Task<SimpleRealtimeStationCard[]> GetRealtimeStnTrain(string code)
+        {
+            var resp = await Get(string.Format("http://210.96.13.82:8099/api/rest/subwayInfo/getArvlByInfo?statnId={0}&subwayId={1}", code, code.Substring(0,4)));
+            var xdoc = XDocument.Parse(resp.Content);
+            var data = from query in xdoc.Descendants("itemList")
+                       select new SimpleRealtimeStationCard
+                       {
+                           arvlMsg2 = (string)query.Element("arvlMsg2"),
+                           arvlMsg3 = (string)query.Element("arvlMsg3"),
+                           bStatnNm = (string)query.Element("bStatnNm"),
+                           bTrainNo = (string)query.Element("bTrainNo"),
+                           cStatnNm = (string)query.Element("cStatnNm")
+                       };
+            return data.ToArray();
+        }
+
+        public static async Task<string> GetNotice()
+        {
+            var resp = await Get(proc + "?do=alert");
+            return resp.Content;
         }
     }
 }

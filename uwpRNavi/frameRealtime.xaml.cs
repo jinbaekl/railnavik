@@ -27,7 +27,7 @@ namespace uwpRNavi
     public sealed partial class frameRealtime : Page
     {
         ObservableCollection<SimpleStation> ocStation = new ObservableCollection<SimpleStation>();
-        List<SimpleStation> lsNearStation = new List<SimpleStation>();
+        SimpleStation selected = null;
 
         public frameRealtime()
         {
@@ -56,12 +56,16 @@ namespace uwpRNavi
                         {
                             Station_CD = (string)stn["Station_CD"],
                             Station_NM_Kor = (string)stn["Station_NM_Kor"],
-                            distance = (int)stn["distance"]
+                            distance = (int)stn["distance"],
+                            Station_Lineinfo = (string)stn["Station_Lineinfo"],
+                            statnId = (string)stn["statnId"]
                         };
-                        lsNearStation.Add(newitem);
                         ocStation.Add(newitem);
                     }
                     asbStation.PlaceholderText = ocStation[0].Station_NM_Kor;
+                    StaticStore.LastNearStation = ocStation.ToArray();
+                    selected = ocStation[0];
+                    RealtimePos(ocStation[0]);
                 }
             }
         }
@@ -81,12 +85,55 @@ namespace uwpRNavi
 
         private void asbStation_QuerySubmitted(AutoSuggestBox sender, AutoSuggestBoxQuerySubmittedEventArgs args)
         {
-
+            
         }
 
         private void asbStation_SuggestionChosen(AutoSuggestBox sender, AutoSuggestBoxSuggestionChosenEventArgs args)
         {
+            if (args.SelectedItem != null)
+            {
+                RealtimePos(args.SelectedItem as SimpleStation);
+            }
+        }
 
+        private async void RealtimePos(SimpleStation simpleStation)
+        {
+            if(simpleStation != null)
+            {
+                var cards = await Communication.GetRealtimeStnTrain(simpleStation.statnId);
+                lvNow.ItemsSource = cards.ToList();
+            }
+        }
+
+        private async void asbStation_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
+        {
+            if (args.Reason == AutoSuggestionBoxTextChangeReason.UserInput)
+            {
+                if (asbStation.Text.Length == 0)
+                {
+                    sender.ItemsSource = ocStation;
+                    selected = ocStation[0];
+                }
+                else
+                {
+                    var stns = await Communication.GetChosungOrKeywordStation(asbStation.Text);
+                    if(stns == null)
+                    {
+                        return;
+                    }
+                    List<SimpleStation> lsSS = new List<SimpleStation>();
+                    foreach (var stn in stns)
+                    {
+                        SimpleStation ss = new SimpleStation();
+                        ss.Station_CD = (string)stn["Station_CD"];
+                        ss.Station_NM_Kor = (string)stn["Station_NM_Kor"];
+                        ss.Station_Lineinfo = (string)stn["Station_Lineinfo"];
+                        ss.statnId = (string)stn["statnId"];
+                        lsSS.Add(ss);
+                    }
+                    sender.ItemsSource = lsSS;
+                }
+            }
         }
     }
 }
