@@ -62,10 +62,26 @@ namespace uwpRNavi
 
         private void pvMain_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if(pvMain.SelectedIndex == 2 && wvLinemap.Source == null)
+            switch(pvMain.SelectedIndex)
             {
-                wvLinemap.Navigate(new Uri("ms-appx-web:///Map/subway.html"));
+                case 0:
+                    if (frFirst.CurrentSourcePageType == null)
+                    {
+                        frFirst.Navigate(typeof(frameRealtime));
+                    }
+                    break;
+                case 2:
+                    if (wvLinemap.Source == null)
+                    {
+                        wvLinemap.Navigate(new Uri("ms-appx-web:///Map/subway.html"));
+                    }
+                    break;
             }
+        }
+
+        private void btnInfo_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(AboutPage));
         }
     }
 
