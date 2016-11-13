@@ -26,7 +26,12 @@ namespace uwpRNavi
         public MainPage()
         {
             this.InitializeComponent();
+        }
 
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+            Windows.UI.Core.SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = Windows.UI.Core.AppViewBackButtonVisibility.Collapsed;
         }
 
         private void Page_Loaded(object sender, RoutedEventArgs e)

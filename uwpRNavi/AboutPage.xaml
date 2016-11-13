@@ -8,6 +8,12 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
+        <StackPanel>
+            <TextBlock x:Name="tbTitle" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="RailNaviK 프로젝트" VerticalAlignment="Top" Style="{ThemeResource TitleTextBlockStyle}"/>
+            <TextBlock x:Name="tbVersion" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="0.1.16.1113" VerticalAlignment="Top" Style="{ThemeResource SubtitleTextBlockStyle}"/>
+            <TextBlock x:Name="tbDesc" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="전철을 탈 때 당신이 궁금한 모든 것." VerticalAlignment="Top" Style="{ThemeResource SubtitleTextBlockStyle}"/>
+            <TextBlock x:Name="tbAuthor" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Style="{ThemeResource SubtitleTextBlockStyle}">201131307 이진백<LineBreak/>201333616 고준영<LineBreak/>201333704 정헌</TextBlock>
+            <HyperlinkButton Content="http://gachon.ac.kr" NavigateUri="http://gachon.ac.kr" Margin="10,10,0,0"/>
+        </StackPanel>
     </Grid>
 </Page>
