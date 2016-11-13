@@ -36,12 +36,19 @@ namespace uwpRNavi
         {
             if (tpTime != null)
             {
-                if (cbOption.SelectedIndex > 1)
+                if (cbOption.SelectedIndex == 0)
                 {
+                    dpDate.Visibility = Visibility.Collapsed;
+                    tpTime.Visibility = Visibility.Collapsed;
+                }
+                else if (cbOption.SelectedIndex > 2)
+                {
+                    dpDate.Visibility = Visibility.Visible;
                     tpTime.Visibility = Visibility.Collapsed;
                 }
                 else
                 {
+                    dpDate.Visibility = Visibility.Visible;
                     tpTime.Visibility = Visibility.Visible;
                 }
             }
@@ -57,6 +64,44 @@ namespace uwpRNavi
             if(alert.Length >= 3)
             {
                 hbButton.Content = alert[2];
+            }
+        }
+
+        private void asbFrom_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (asbFrom.Text.Length == 0 && StaticStore.LastNearStation != null)
+            {
+                asbFrom.IsSuggestionListOpen = true;
+            }
+        }
+
+        private async void asbTo_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
+        {
+            if (args.Reason == AutoSuggestionBoxTextChangeReason.UserInput)
+            {
+                if (sender.Text.Length == 0 && StaticStore.LastNearStation != null)
+                {
+                    sender.ItemsSource = StaticStore.LastNearStation.ToList();
+                }
+                else
+                {
+                    var stns = await Communication.GetChosungOrKeywordStation(sender.Text);
+                    if (stns == null)
+                    {
+                        return;
+                    }
+                    List<SimpleStation> lsSS = new List<SimpleStation>();
+                    foreach (var stn in stns)
+                    {
+                        SimpleStation ss = new SimpleStation();
+                        ss.Station_CD = (string)stn["Station_CD"];
+                        ss.Station_NM_Kor = (string)stn["Station_NM_Kor"];
+                        ss.Station_Lineinfo = (string)stn["Station_Lineinfo"];
+                        ss.statnId = (string)stn["statnId"];
+                        lsSS.Add(ss);
+                    }
+                    sender.ItemsSource = lsSS;
+                }
             }
         }
     }

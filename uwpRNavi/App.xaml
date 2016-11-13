@@ -5,6 +5,21 @@
     xmlns:local="using:uwpRNavi"
     RequestedTheme="Light">
     <Application.Resources>
+        <DataTemplate x:Key="dtStation">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
+                </Grid.ColumnDefinitions>
+                <Ellipse Width="30" Height="30" Stroke="{Binding LineColor}" StrokeThickness="2"/>
+                <TextBlock Text="{Binding LineChar}" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="NoWrap"/>
+                <TextBlock Text="{Binding}" Grid.Column="1" Margin="10" Style="{ThemeResource FlyoutPickerTitleTextBlockStyle}"/>
+                <TextBlock Text="{Binding LineName}" Grid.Column="2" Margin="10" Style="{ThemeResource CaptionTextBlockStyle}" VerticalAlignment="Center" Opacity="0.5"/>
+                <TextBlock Text="{Binding Distance}" Grid.Column="3" Margin="10" Style="{ThemeResource CaptionTextBlockStyle}" VerticalAlignment="Center" Opacity="{Binding DistanceVisibility}"/>
+            </Grid>
+        </DataTemplate>
         <ControlTemplate TargetType="Pivot" x:Name="pvtarget">
             <Grid x:Name="RootElement"
                             HorizontalAlignment="{TemplateBinding HorizontalAlignment}"

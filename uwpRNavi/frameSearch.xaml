@@ -20,11 +20,11 @@
                 <ColumnDefinition Width="auto"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <SymbolIcon Symbol="Volume" Margin="10"/>
+            <PathIcon HorizontalAlignment="Center" VerticalAlignment="Center" Data="M8.71875190734863,15.3125L8.71875190734863,17.6874923706055 11.2187528610229,17.6874923706055 11.2187528610229,15.3125 8.71875190734863,15.3125z M8.71875190734863,6.49997711181641L8.71875190734863,13.5624694824219 11.2187528610229,13.5624694824219 11.2187528610229,6.49997711181641 8.71875190734863,6.49997711181641z M9.96875190734863,0L10.5937528610229,0.437469482421875 19.8437576293945,18.8124847412109 19.8437576293945,19.6249771118164 19.2187576293945,20 0.718748807907104,20 0.0937485024333,19.6249771118164 0.0937485024333,18.8124847412109 9.34375190734863,0.437469482421875 9.96875190734863,0z"/>
             <HyperlinkButton x:Name="hbButton" Grid.Column="1" Content="로드 중..." NavigateUri="http://zermoth.net/railroad/logis/Notice.aspx?category=24"/>
         </Grid>
-        <AutoSuggestBox x:Name="asbFrom" Grid.Row="1" Margin="10" Padding="10"/>
-        <AutoSuggestBox x:Name="asbTo" Grid.Row="2" Margin="10" Padding="10"/>
+        <AutoSuggestBox x:Name="asbFrom" Grid.Row="1" Margin="10" Padding="10" GotFocus="asbFrom_GotFocus" TextChanged="asbTo_TextChanged" TextMemberPath="Station_NM_Kor" ItemTemplate="{StaticResource dtStation}"/>
+        <AutoSuggestBox x:Name="asbTo" Grid.Row="2" Margin="10" Padding="10" TextChanged="asbTo_TextChanged" TextMemberPath="Station_NM_Kor" ItemTemplate="{StaticResource dtStation}"/>
         <Grid Grid.Row="3">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="0.3*"/>
@@ -35,13 +35,14 @@
                     <Flyout Placement="Bottom">
                         <StackPanel>
                             <ComboBox x:Name="cbOption" HorizontalAlignment="Stretch" Margin="10" Padding="10" SelectedIndex="0" SelectionChanged="cbOption_SelectionChanged">
+                                <ComboBoxItem>지금 출발</ComboBoxItem>
                                 <ComboBoxItem>출발 시각</ComboBoxItem>
                                 <ComboBoxItem>도착 시각</ComboBoxItem>
                                 <ComboBoxItem>첫차</ComboBoxItem>
                                 <ComboBoxItem>막차</ComboBoxItem>
                             </ComboBox>
-                            <DatePicker x:Name="dpDate" HorizontalAlignment="Stretch" Margin="10"/>
-                            <TimePicker x:Name="tpTime" HorizontalAlignment="Stretch" Margin="10"/>
+                            <DatePicker x:Name="dpDate" HorizontalAlignment="Stretch" Margin="10" Visibility="Collapsed"/>
+                            <TimePicker x:Name="tpTime" HorizontalAlignment="Stretch" Margin="10" Visibility="Collapsed"/>
                         </StackPanel>
                     </Flyout>
                 </Button.Flyout>
