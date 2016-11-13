@@ -29,8 +29,18 @@ namespace uwpRNavi.Model
         }
     }
 
-    class Line
+    public class SimpleLine
     {
+        public string LineChar { get; set; }
+        public string Name { get
+            {
+                int test = Array.FindIndex(StaticStore.lineCharacter,(s) => { return s == LineChar; });
+                if(test >= 0)
+                {
+                    return StaticStore.lineName[test];
+                }
+                return "";
+            } }
     }
 
     class Direction

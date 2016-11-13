@@ -93,5 +93,23 @@ namespace uwpRNavi
             }
             return null;
         }
+
+        public static async Task<SimpleLine[]> GetLineByStnCode(string code)
+        {
+            var resp = await Get(proc + string.Format("?do=stnline&regkey={0}&sid={1}", regkey, code));
+            if (resp.IsJson)
+            {
+                var result = resp.Json["result"];
+                List<SimpleLine> lsSL = new List<SimpleLine>();
+                foreach(var line in result.Children())
+                {
+                    SimpleLine sl = new SimpleLine();
+                    sl.LineChar = (string)line;
+                    lsSL.Add(sl);
+                }
+                return lsSL.ToArray();
+            }
+            return null;
+        }
     }
 }

@@ -27,6 +27,7 @@ namespace uwpRNavi
     public sealed partial class frameRealtime : Page
     {
         ObservableCollection<SimpleStation> ocStation = new ObservableCollection<SimpleStation>();
+        List<SimpleStation> lsNearStation = new List<SimpleStation>();
 
         public frameRealtime()
         {
@@ -51,13 +52,16 @@ namespace uwpRNavi
                     ocStation.Clear();
                     foreach(var stn in stations.Children())
                     {
-                        ocStation.Add(new SimpleStation()
+                        var newitem = new SimpleStation()
                         {
-                            Station_CD=(string)((Newtonsoft.Json.Linq.JProperty)stn).Value["Station_CD"],
-                            Station_NM_Kor =(string)((Newtonsoft.Json.Linq.JProperty)stn).Value["Station_NM_Kor"],
-                            distance=(int)((Newtonsoft.Json.Linq.JProperty)stn).Value["distance"]
-                        });
+                            Station_CD = (string)stn["Station_CD"],
+                            Station_NM_Kor = (string)stn["Station_NM_Kor"],
+                            distance = (int)stn["distance"]
+                        };
+                        lsNearStation.Add(newitem);
+                        ocStation.Add(newitem);
                     }
+                    asbStation.PlaceholderText = ocStation[0].Station_NM_Kor;
                 }
             }
         }
@@ -73,6 +77,16 @@ namespace uwpRNavi
             {
                 asbStation.IsSuggestionListOpen = true;
             }
+        }
+
+        private void asbStation_QuerySubmitted(AutoSuggestBox sender, AutoSuggestBoxQuerySubmittedEventArgs args)
+        {
+
+        }
+
+        private void asbStation_SuggestionChosen(AutoSuggestBox sender, AutoSuggestBoxSuggestionChosenEventArgs args)
+        {
+
         }
     }
 }

@@ -43,5 +43,7 @@ namespace uwpRNavi.Model
         }
         public static string[] lineCharacter = new string[] { "1","2","3","4","5","6","7","8","9","A","B","E","G","I","J","K","O","S","U","W","Y" };
         public static string[] lineName = new string[] { "1호선", "2호선", "3호선", "4호선", "5호선", "6호선", "7호선", "8호선", "9호선", "공항철도", "분당선", "인천2호선", "경춘선", "인천1호선", "J", "경의중앙선", "경강선", "신분당선", "의정부경천절", "수인선", "용인경전철" };
+
+        public static SimpleStation[] LastNearStation { get; set; }
     }
 }

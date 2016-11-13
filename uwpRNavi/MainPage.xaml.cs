@@ -32,6 +32,18 @@ namespace uwpRNavi
         {
             base.OnNavigatedTo(e);
             Windows.UI.Core.SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = Windows.UI.Core.AppViewBackButtonVisibility.Collapsed;
+            //Mobile customization
+            if (Windows.Foundation.Metadata.ApiInformation.IsTypePresent("Windows.UI.ViewManagement.StatusBar"))
+            {
+
+                var statusBar = Windows.UI.ViewManagement.StatusBar.GetForCurrentView();
+                if (statusBar != null)
+                {
+                    statusBar.BackgroundOpacity = 1;
+                    statusBar.BackgroundColor = Windows.UI.Color.FromArgb(255,249,105,39);
+                    statusBar.ForegroundColor = Windows.UI.Colors.White;
+                }
+            }
         }
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
@@ -70,15 +82,27 @@ namespace uwpRNavi
             switch(pvMain.SelectedIndex)
             {
                 case 0:
-                    if (frFirst.CurrentSourcePageType == null)
+                    if (frFirst.CurrentSourcePageType != typeof(frameRealtime))
                     {
                         frFirst.Navigate(typeof(frameRealtime));
+                    }
+                    break;
+                case 1:
+                    if (frSecond.CurrentSourcePageType != typeof(frameSearch))
+                    {
+                        frSecond.Navigate(typeof(frameSearch));
                     }
                     break;
                 case 2:
                     if (wvLinemap.Source == null)
                     {
                         wvLinemap.Navigate(new Uri("ms-appx-web:///Map/subway.html"));
+                    }
+                    break;
+                case 3:
+                    if (frFourth.CurrentSourcePageType != typeof(frameNavigation))
+                    {
+                        frFourth.Navigate(typeof(frameNavigation));
                     }
                     break;
             }

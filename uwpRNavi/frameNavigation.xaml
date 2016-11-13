@@ -1,0 +1,29 @@
+﻿<Page
+    x:Class="uwpRNavi.frameNavigation"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:uwpRNavi"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="130"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.3*"/>
+                <ColumnDefinition Width="0.7*"/>
+            </Grid.ColumnDefinitions>
+            <Border Background="#FFF96927" Grid.ColumnSpan="2" Margin="-13,-10,-13,0"/>
+            <ToggleButton x:Name="btnSound" HorizontalAlignment="Right" Margin="30,30,0,30" Padding="10" Background="Transparent" Foreground="White" VerticalAlignment="Center">
+                <Viewbox Width="30">
+                    <SymbolIcon Symbol="Volume"/>
+                </Viewbox>
+            </ToggleButton>
+            <TextBlock Text="00:00:00" Grid.Column="1" HorizontalAlignment="Left" Margin="30" VerticalAlignment="Center" Style="{ThemeResource SubheaderTextBlockStyle}" FontWeight="SemiBold" Foreground="White"/>
+        </Grid>
+    </Grid>
+</Page>

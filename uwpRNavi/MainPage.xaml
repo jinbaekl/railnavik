@@ -99,7 +99,7 @@
                         <Viewbox Height="20">
                             <SymbolIcon Symbol="{Binding Symbol}"/>
                         </Viewbox>
-                        <TextBlock FontSize="12" Text="{Binding Label}"/>
+                        <TextBlock FontSize="12" Margin="0,5,0,0" Text="{Binding Label}"/>
                     </StackPanel>
                 </DataTemplate>
             </Pivot.HeaderTemplate>
@@ -117,7 +117,7 @@
                     <local:TabIconItem Label="검색" Symbol="Find"/>
                 </PivotItem.Header>
                 <Grid>
-                    <TextBlock Text="Second" Style="{ThemeResource TitleTextBlockStyle}"/>
+                    <Frame x:Name="frSecond"/>
                 </Grid>
             </PivotItem>
             <PivotItem>
@@ -125,7 +125,7 @@
                     <local:TabIconItem Label="노선도" Symbol="Map"/>
                 </PivotItem.Header>
                 <Grid>
-                    <WebView x:Name="wvLinemap"/>
+                    <WebView x:Name="wvLinemap" Margin="-15,-10,-15,-10"/>
                 </Grid>
             </PivotItem>
             <PivotItem>
@@ -133,7 +133,7 @@
                     <local:TabIconItem Label="따라가기" Symbol="Directions"/>
                 </PivotItem.Header>
                 <Grid>
-                    <TextBlock Text="Fourth" Style="{ThemeResource TitleTextBlockStyle}"/>
+                    <Frame x:Name="frFourth"/>
                 </Grid>
             </PivotItem>
         </Pivot>

@@ -46,7 +46,7 @@
             <ColumnDefinition Width="0.5*"/>
             <ColumnDefinition Width="0.5*"/>
         </Grid.ColumnDefinitions>
-        <AutoSuggestBox x:Name="asbStation" Margin="10" HorizontalAlignment="Stretch" Grid.ColumnSpan="2" GotFocus="asbStation_GotFocus">
+        <AutoSuggestBox x:Name="asbStation" Padding="10" Margin="5" HorizontalAlignment="Stretch" Grid.ColumnSpan="2" GotFocus="asbStation_GotFocus" QuerySubmitted="asbStation_QuerySubmitted" SuggestionChosen="asbStation_SuggestionChosen" TextMemberPath="Station_NM_Kor">
             <AutoSuggestBox.ItemTemplate>
                 <DataTemplate>
                     <Grid>
@@ -54,7 +54,7 @@
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="auto"/>
                         </Grid.ColumnDefinitions>
-                        <TextBlock Text="{Binding Station_NM_Kor}" Grid.Column="0" Margin="10" Style="{ThemeResource FlyoutPickerTitleTextBlockStyle}"/>
+                        <TextBlock Text="{Binding}" Grid.Column="0" Margin="10" Style="{ThemeResource FlyoutPickerTitleTextBlockStyle}"/>
                         <TextBlock Text="{Binding Distance}" Grid.Column="1" Margin="10" Style="{ThemeResource CaptionTextBlockStyle}" VerticalAlignment="Center" Opacity="0.5"/>
                     </Grid>
                 </DataTemplate>
