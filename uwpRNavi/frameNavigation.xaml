@@ -3,6 +3,7 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:uwpRNavi"
+    xmlns:model="using:uwpRNavi.Model"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
@@ -26,10 +27,38 @@
             </ToggleButton>
             <TextBlock Text="00:00:00" Grid.Column="1" HorizontalAlignment="Left" Margin="30" VerticalAlignment="Center" Style="{ThemeResource SubheaderTextBlockStyle}" FontWeight="SemiBold" Foreground="White"/>
         </Grid>
-        <ListView Grid.Row="1"/>
+        <ListView Grid.Row="1" HorizontalContentAlignment="Stretch">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="auto"/>
+                        </Grid.ColumnDefinitions>
+                        <SymbolIcon Symbol="{Binding Symbol}"/>
+                        <TextBlock Grid.Column="1" Text="{Binding Label}"/>
+                        <TextBlock Grid.Column="2" Text="{Binding Sublabel}" Opacity="0.5"/>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+            <model:NavTodo Label="가천대역 진입" Type="Start"/>
+            <model:NavTodo Label="12:20 분당선 왕십리행 K2102열차 승차" Sublabel="10분" Type="Ride"/>
+            <model:NavTodo Label="12:30 수서역 하차" Sublabel="3분" Type="Takeoff"/>
+            <model:NavTodo Label="12:33 3호선 대화행 K3112열차 환승" Sublabel="" Type="Transfer"/>
+            <model:NavTodo Label="12:45 양재역 하차" Sublabel="" Type="Start"/>
+        </ListView>
         <Grid Grid.Row="2" Background="{StaticResource SystemControlBackgroundChromeMediumBrush}" Margin="-12,0,-10,-12">
             <StackPanel Orientation="Horizontal">
                 <Button Background="Transparent" Padding="10">
+                    <Button.Flyout>
+                        <Flyout>
+                            <ListView Width="150" Height="200" HorizontalContentAlignment="Stretch" ItemTemplate="{StaticResource dtStation}">
+                                <ListBoxItem/>
+                                <ListBoxItem/>
+                            </ListView>
+                        </Flyout>
+                    </Button.Flyout>
                     <StackPanel>
                         <PathIcon HorizontalAlignment="Center" VerticalAlignment="Center" Data="M2.56250381469727,18.5000038146973L12.9375076293945,18.5000038146973 15.3125,20 0,20 2.56250381469727,18.5000038146973z M4.75000381469727,7.8125L4.29687738418579,8.0078125 4.12500381469727,8.4375 4.32031631469727,8.89062690734863 4.75000381469727,9.0625 5.20313024520874,8.8671875 5.37500381469727,8.4375 5.17969131469727,8.0078125 4.75000381469727,7.8125z M2.93750762939453,0L12.5,0 12.5,16.9375038146973 2.93750762939453,16.9375038146973 2.93750762939453,0z" />
                         <TextBlock Text="화장실" Margin="0,10,0,0"/>

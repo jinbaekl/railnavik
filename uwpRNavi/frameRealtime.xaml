@@ -66,6 +66,7 @@
                 <Run/>
             </ListView.Items>
         </ListView>
+        <ProgressRing x:Name="prLoading" Grid.ColumnSpan="2" Grid.RowSpan="2" Width="50" Height="50" Visibility="Visible" IsActive="True" Foreground="#FFF96927"/>
     </Grid>
 </Page>
 

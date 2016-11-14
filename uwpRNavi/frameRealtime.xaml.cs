@@ -27,11 +27,24 @@ namespace uwpRNavi
     public sealed partial class frameRealtime : Page
     {
         ObservableCollection<SimpleStation> ocStation = new ObservableCollection<SimpleStation>();
+        ObservableCollection<SimpleRealtimeStationCard> ocRS = new ObservableCollection<SimpleRealtimeStationCard>();
         SimpleStation selected = null;
+        DispatcherTimer dtTimer = new DispatcherTimer();
 
         public frameRealtime()
         {
             this.InitializeComponent();
+            dtTimer.Interval = new TimeSpan(0, 0, 10);
+            dtTimer.Tick += DtTimer_Tick;
+            dtTimer.Start();
+        }
+
+        private void DtTimer_Tick(object sender, object e)
+        {
+            if(selected != null)
+            {
+                RealtimePos(selected);
+            }
         }
 
         private async void Page_Loaded(object sender, RoutedEventArgs e)
@@ -68,6 +81,7 @@ namespace uwpRNavi
                     RealtimePos(ocStation[0]);
                 }
             }
+            lvNow.ItemsSource = ocRS;
         }
 
         private void button_Click(object sender, RoutedEventArgs e)
@@ -92,17 +106,39 @@ namespace uwpRNavi
         {
             if (args.SelectedItem != null)
             {
+                selected = args.SelectedItem as SimpleStation;
                 RealtimePos(args.SelectedItem as SimpleStation);
             }
         }
 
         private async void RealtimePos(SimpleStation simpleStation)
         {
-            if(simpleStation != null)
+            prLoading.IsActive = true;
+            prLoading.Visibility = Visibility.Visible;
+            if (simpleStation != null)
             {
                 var cards = await Communication.GetRealtimeStnTrain(simpleStation.statnId);
-                lvNow.ItemsSource = cards.ToList();
+                while (ocRS.Count > cards.Length)
+                {
+                    ocRS.RemoveAt(ocRS.Count - 1);
+                }
+                for (int i = 0; i < cards.Length; i++)
+                {
+                    if (i < ocRS.Count)
+                    {
+                        ocRS[i].cStatnNm = cards[i].cStatnNm;
+                        ocRS[i].bStatnNm = cards[i].bStatnNm;
+                        ocRS[i].arvlMsg2 = cards[i].arvlMsg2;
+                        ocRS[i].arvlMsg3 = cards[i].arvlMsg3;
+                    }
+                    else
+                    {
+                        ocRS.Add(cards[i]);
+                    }
+                }
             }
+            prLoading.IsActive = false;
+            prLoading.Visibility = Visibility.Collapsed;
         }
 
         private async void asbStation_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)

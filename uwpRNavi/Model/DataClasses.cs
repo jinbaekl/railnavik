@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -80,10 +81,32 @@ namespace uwpRNavi.Model
             } }
     }
 
-    public class SimpleRealtimeStationCard
+    public class SimpleRealtimeStationCard : INotifyPropertyChanged
     {
-        public string arvlMsg2 { get; set; }
-        public string arvlMsg3 { get; set; }
+        private string _arvlMsg2;
+        public string arvlMsg2 { get
+            {
+                return _arvlMsg2;
+            }
+            set
+            {
+                _arvlMsg2 = value;
+                RaisePropertyChanged("arvlMsg2"); 
+            }
+        }
+        private string _arvlMsg3;
+        public string arvlMsg3
+        {
+            get
+            {
+                return _arvlMsg3;
+            }
+            set
+            {
+                _arvlMsg3 = value;
+                RaisePropertyChanged("arvlMsg3");
+            }
+        }
         public string bStatnNm { get; set; }
         public string bTrainNo { get; set; }
         public string cStatnNm { get; set; }
@@ -92,6 +115,15 @@ namespace uwpRNavi.Model
             {
                 return string.Format("{0} - {1}", cStatnNm, bStatnNm);
             } }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void RaisePropertyChanged(string name)
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(name));
+            }
+        }
     }
 
     enum NavEnumTodo

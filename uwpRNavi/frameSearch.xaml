@@ -33,7 +33,7 @@
             <Button x:Name="btnOption" HorizontalAlignment="Stretch" Margin="10" Padding="10" Background="Transparent" Grid.Column="0">
                 <Button.Flyout>
                     <Flyout Placement="Bottom">
-                        <StackPanel>
+                        <StackPanel Width="300">
                             <ComboBox x:Name="cbOption" HorizontalAlignment="Stretch" Margin="10" Padding="10" SelectedIndex="0" SelectionChanged="cbOption_SelectionChanged">
                                 <ComboBoxItem>지금 출발</ComboBoxItem>
                                 <ComboBoxItem>출발 시각</ComboBoxItem>
