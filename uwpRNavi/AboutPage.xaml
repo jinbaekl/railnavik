@@ -8,12 +8,18 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <StackPanel>
-            <TextBlock x:Name="tbTitle" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="RailNaviK 프로젝트" VerticalAlignment="Top" Style="{ThemeResource TitleTextBlockStyle}"/>
-            <TextBlock x:Name="tbVersion" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="0.1.16.1113" VerticalAlignment="Top" Style="{ThemeResource SubtitleTextBlockStyle}"/>
-            <TextBlock x:Name="tbDesc" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="전철을 탈 때 당신이 궁금한 모든 것." VerticalAlignment="Top" Style="{ThemeResource SubtitleTextBlockStyle}"/>
-            <TextBlock x:Name="tbAuthor" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Style="{ThemeResource SubtitleTextBlockStyle}">201131307 이진백<LineBreak/>201333616 고준영<LineBreak/>201333704 정헌</TextBlock>
-            <HyperlinkButton Content="http://gachon.ac.kr" NavigateUri="http://gachon.ac.kr" Margin="10,10,0,0"/>
-        </StackPanel>
+        <ScrollViewer ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+            <StackPanel>
+                <TextBlock x:Name="tbTitle" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="RailNaviK 프로젝트" VerticalAlignment="Top" Style="{ThemeResource TitleTextBlockStyle}"/>
+                <TextBlock HorizontalAlignment="Left" Margin="10,0,0,0" TextWrapping="Wrap" Text="의 부산물 RailNavi" VerticalAlignment="Top" Style="{ThemeResource BodyTextBlockStyle}"/>
+                <TextBlock x:Name="tbVersion" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="0.1.16.1113" VerticalAlignment="Top" Style="{ThemeResource SubtitleTextBlockStyle}"/>
+                <TextBlock x:Name="tbDesc" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="전철을 탈 때 당신이 궁금한 모든 것." VerticalAlignment="Top" Style="{ThemeResource SubtitleTextBlockStyle}"/>
+                <TextBlock x:Name="tbAuthor" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Style="{ThemeResource SubtitleTextBlockStyle}">201131307 이진백<LineBreak/>201333616 고준영<LineBreak/>201333704 정헌</TextBlock>
+                <HyperlinkButton Content="http://gachon.ac.kr" NavigateUri="http://gachon.ac.kr" Margin="10,10,0,0"/>
+                <TextBlock HorizontalAlignment="Left" Margin="10,10,10,0" TextWrapping="Wrap" VerticalAlignment="Top" Style="{ThemeResource BodyTextBlockStyle}">앱의 원활한 작동을 위해 사용자는 <Run FontWeight="Bold">네트워크 연결</Run>, <Run FontWeight="Bold">위치 정보 제공</Run>에 동의하셔야 합니다. 정보 조회는 온라인 기반으로 작동하므로 데이터 통신 금액에 유의하시기 바랍니다.</TextBlock>
+                <TextBlock HorizontalAlignment="Left" Margin="10,10,10,0" TextWrapping="Wrap" VerticalAlignment="Top" Style="{ThemeResource BodyTextBlockStyle}">실시간 교통 정보를 제공하는 TOPIS(topis.seoul.go.kr)는 서울시 교통정보과입니다. 지하철 노선도는 코레일에서 배포하였습니다. 시간표는 각 운영사에서 제공되었습니다. 지도 정보와 도보 탐색 기능은 네이버에서 제공합니다. 이 앱은 노선 운영사와 행정 기관과 무관하며, 앱 내부에 사용된 타사 상표는 각 회사에게 모든 권리가 있습니다.<LineBreak/>실제 정보와 차이가 있을 수 있으며, 오류가 발생할 수 있습니다. 정보가 부정확할 경우 앱 제작자가 세울 수 있는 대책은 없습니다. 이 앱에서 제공된 정보를 가지고 관련 기관에 민원을 넣으면 향후 해당 기능 제공이 타의적으로 중단될 수 있습니다.</TextBlock>
+                <TextBlock HorizontalAlignment="Left" Margin="10,10,10,0" TextWrapping="Wrap" VerticalAlignment="Top" Style="{ThemeResource BaseTextBlockStyle}">Special Thanks to Art Designer Natchan :)<LineBreak/><Run FontWeight="Thin">(Nayoung Kim)</Run></TextBlock>
+            </StackPanel>
+        </ScrollViewer>
     </Grid>
 </Page>

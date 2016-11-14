@@ -107,8 +107,27 @@ namespace uwpRNavi.Model
                 RaisePropertyChanged("arvlMsg3");
             }
         }
-        public string bStatnNm { get; set; }
-        public string bTrainNo { get; set; }
+        private string _bStatnNm;
+        public string bStatnNm { get
+            {
+                return _bStatnNm;
+            } set
+            {
+                _bStatnNm = value;
+                RaisePropertyChanged("toTrain");
+            }
+        }
+        private string _bTrainNo;
+        public string bTrainNo { get
+            {
+                return _bTrainNo;
+            }
+                set
+            {
+                _bTrainNo = value;
+                RaisePropertyChanged("toTrain");
+            }
+        }
         public string cStatnNm { get; set; }
         public string updnLine { get; set; }
         public string toTrain { get
@@ -119,14 +138,29 @@ namespace uwpRNavi.Model
         public event PropertyChangedEventHandler PropertyChanged;
         protected void RaisePropertyChanged(string name)
         {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(name));
-            }
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
     }
 
-    enum NavEnumTodo
+    enum RealtimeType
+    {
+        Station,
+        Line
+    }
+
+    public class RealtimeList
+    {
+        private int myVar;
+
+        public int MyProperty
+        {
+            get { return myVar; }
+            set { myVar = value; }
+        }
+
+    }
+
+    public enum NavEnumTodo
     {
         Start,
         Walk,
@@ -136,7 +170,7 @@ namespace uwpRNavi.Model
         End
     }
 
-    class NavTodo
+    public class NavTodo
     {
         public NavEnumTodo Type { get; set; }
         public Symbol Symbol { get

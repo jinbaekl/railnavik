@@ -68,11 +68,18 @@ namespace uwpRNavi
 
         private static async Task<MyResponse> Get(string uri)
         {
-            HttpClient client = new HttpClient();
-            HttpResponseMessage responseGet = await client.GetAsync(uri);
-            string response = await responseGet.Content.ReadAsStringAsync();
+            try
+            {
+                HttpClient client = new HttpClient();
+                HttpResponseMessage responseGet = await client.GetAsync(uri);
+                string response = await responseGet.Content.ReadAsStringAsync();
 
-            return new MyResponse(responseGet.IsSuccessStatusCode, response);
+                return new MyResponse(responseGet.IsSuccessStatusCode, response);
+            }
+            catch(Exception ex)
+            {
+                return new MyResponse(false, ex.GetType().ToString());
+            }
         }
 
         public static async void Register()
