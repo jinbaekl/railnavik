@@ -159,6 +159,7 @@
     <Content Include="Assets\Wide310x150Logo.scale-150.png" />
     <Content Include="Assets\Wide310x150Logo.scale-400.png" />
     <Content Include="dump\realtime_line.txt" />
+    <Content Include="dump\realtime_openapi_line.txt" />
     <Content Include="dump\realtime_response.txt" />
     <Content Include="Map\seoulsubway.png" />
     <Content Include="Map\subway.html" />
