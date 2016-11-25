@@ -1,0 +1,352 @@
+﻿http://bus.go.kr/getXml2.jsp?subwayId=1075
+Ref: http://bus.go.kr/flash/subway_other.jsp
+
+
+<?xml version="1.0" encoding="utf-8"?>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <msgBody>
+    
+        <itemList>
+            <statnId>1075075235</statnId>
+            <updnLineSe>0</updnLineSe>
+            <trainAt>1</trainAt>
+            <directAt>0</directAt>
+            <imgLoc>2</imgLoc>
+            <statnX>1714</statnX>
+            <statnY>1611</statnY>
+        </itemList>
+	
+        <itemList>
+            <statnId>1075075210</statnId>
+            <updnLineSe>1</updnLineSe>
+            <trainAt>1</trainAt>
+            <directAt>0</directAt>
+            <imgLoc>7</imgLoc>
+            <statnX>1685</statnX>
+            <statnY>850</statnY>
+        </itemList>
+	
+        <itemList>
+            <statnId>1075075245</statnId>
+            <updnLineSe>0</updnLineSe>
+            <trainAt>1</trainAt>
+            <directAt>0</directAt>
+            <imgLoc>2</imgLoc>
+            <statnX>1259</statnX>
+            <statnY>1794</statnY>
+        </itemList>
+	
+        <itemList>
+            <statnId>1075075231</statnId>
+            <updnLineSe>1</updnLineSe>
+            <trainAt>1</trainAt>
+            <directAt>0</directAt>
+            <imgLoc>5</imgLoc>
+            <statnX>1918</statnX>
+            <statnY>1590</statnY>
+        </itemList>
+	
+        <itemList>
+            <statnId>1075075224</statnId>
+            <updnLineSe>1</updnLineSe>
+            <trainAt>0</trainAt>
+            <directAt>0</directAt>
+            <imgLoc>7</imgLoc>
+            <statnX>2207</statnX>
+            <statnY>1472</statnY>
+        </itemList>
+	
+        <itemList>
+            <statnId>1075075211</statnId>
+            <updnLineSe>0</updnLineSe>
+            <trainAt>0</trainAt>
+            <directAt>0</directAt>
+            <imgLoc>4</imgLoc>
+            <statnX>1685</statnX>
+            <statnY>953</statnY>
+        </itemList>
+	
+        <itemList>
+            <statnId>1075075233</statnId>
+            <updnLineSe>1</updnLineSe>
+            <trainAt>1</trainAt>
+            <directAt>0</directAt>
+            <imgLoc>5</imgLoc>
+            <statnX>1817</statnX>
+            <statnY>1590</statnY>
+        </itemList>
+	
+        <itemList>
+            <statnId>1075075210</statnId>
+            <updnLineSe>0</updnLineSe>
+            <trainAt>1</trainAt>
+            <directAt>0</directAt>
+            <imgLoc>4</imgLoc>
+            <statnX>1685</statnX>
+            <statnY>850</statnY>
+        </itemList>
+	
+        <itemList>
+            <statnId>1075075210</statnId>
+            <updnLineSe>0</updnLineSe>
+            <trainAt>1</trainAt>
+            <directAt>0</directAt>
+            <imgLoc>4</imgLoc>
+            <statnX>1685</statnX>
+            <statnY>850</statnY>
+        </itemList>
+	
+        <itemList>
+            <statnId>1075075218</statnId>
+            <updnLineSe>1</updnLineSe>
+            <trainAt>1</trainAt>
+            <directAt>0</directAt>
+            <imgLoc>6</imgLoc>
+            <statnX>1813</statnX>
+            <statnY>1393</statnY>
+        </itemList>
+	
+        <itemList>
+            <statnId>1075075211</statnId>
+            <updnLineSe>1</updnLineSe>
+            <trainAt>1</trainAt>
+            <directAt>0</directAt>
+            <imgLoc>7</imgLoc>
+            <statnX>1685</statnX>
+            <statnY>953</statnY>
+        </itemList>
+	
+        <itemList>
+            <statnId>1075075210</statnId>
+            <updnLineSe>1</updnLineSe>
+            <trainAt>1</trainAt>
+            <directAt>0</directAt>
+            <imgLoc>7</imgLoc>
+            <statnX>1685</statnX>
+            <statnY>850</statnY>
+        </itemList>
+	
+        <itemList>
+            <statnId>1075075235</statnId>
+            <updnLineSe>1</updnLineSe>
+            <trainAt>1</trainAt>
+            <directAt>0</directAt>
+            <imgLoc>5</imgLoc>
+            <statnX>1714</statnX>
+            <statnY>1611</statnY>
+        </itemList>
+	
+        <itemList>
+            <statnId>1075075242</statnId>
+            <updnLineSe>0</updnLineSe>
+            <trainAt>1</trainAt>
+            <directAt>0</directAt>
+            <imgLoc>2</imgLoc>
+            <statnX>1364</statnX>
+            <statnY>1691</statnY>
+        </itemList>
+	
+        <itemList>
+            <statnId>1075075232</statnId>
+            <updnLineSe>1</updnLineSe>
+            <trainAt>1</trainAt>
+            <directAt>0</directAt>
+            <imgLoc>5</imgLoc>
+            <statnX>1867</statnX>
+            <statnY>1590</statnY>
+        </itemList>
+	
+        <itemList>
+            <statnId>1075075231</statnId>
+            <updnLineSe>0</updnLineSe>
+            <trainAt>0</trainAt>
+            <directAt>0</directAt>
+            <imgLoc>2</imgLoc>
+            <statnX>1918</statnX>
+            <statnY>1590</statnY>
+        </itemList>
+	
+        <itemList>
+            <statnId>1075075210</statnId>
+            <updnLineSe>0</updnLineSe>
+            <trainAt>1</trainAt>
+            <directAt>0</directAt>
+            <imgLoc>4</imgLoc>
+            <statnX>1685</statnX>
+            <statnY>850</statnY>
+        </itemList>
+	
+        <itemList>
+            <statnId>1075075210</statnId>
+            <updnLineSe>0</updnLineSe>
+            <trainAt>1</trainAt>
+            <directAt>0</directAt>
+            <imgLoc>4</imgLoc>
+            <statnX>1685</statnX>
+            <statnY>850</statnY>
+        </itemList>
+	
+        <itemList>
+            <statnId>1075075221</statnId>
+            <updnLineSe>1</updnLineSe>
+            <trainAt>0</trainAt>
+            <directAt>0</directAt>
+            <imgLoc>6</imgLoc>
+            <statnX>2027</statnX>
+            <statnY>1359</statnY>
+        </itemList>
+	
+        <itemList>
+            <statnId>1075075214</statnId>
+            <updnLineSe>1</updnLineSe>
+            <trainAt>1</trainAt>
+            <directAt>0</directAt>
+            <imgLoc>7</imgLoc>
+            <statnX>1685</statnX>
+            <statnY>1205</statnY>
+        </itemList>
+	
+        <itemList>
+            <statnId>1075075245</statnId>
+            <updnLineSe>1</updnLineSe>
+            <trainAt>1</trainAt>
+            <directAt>0</directAt>
+            <imgLoc>5</imgLoc>
+            <statnX>1259</statnX>
+            <statnY>1794</statnY>
+        </itemList>
+	
+        <itemList>
+            <statnId>1075075223</statnId>
+            <updnLineSe>0</updnLineSe>
+            <trainAt>0</trainAt>
+            <directAt>0</directAt>
+            <imgLoc>4</imgLoc>
+            <statnX>2207</statnX>
+            <statnY>1423</statnY>
+        </itemList>
+	
+        <itemList>
+            <statnId>1075075245</statnId>
+            <updnLineSe>1</updnLineSe>
+            <trainAt>0</trainAt>
+            <directAt>0</directAt>
+            <imgLoc>5</imgLoc>
+            <statnX>1259</statnX>
+            <statnY>1794</statnY>
+        </itemList>
+	
+        <itemList>
+            <statnId>1075075239</statnId>
+            <updnLineSe>1</updnLineSe>
+            <trainAt>0</trainAt>
+            <directAt>0</directAt>
+            <imgLoc>5</imgLoc>
+            <statnX>1515</statnX>
+            <statnY>1631</statnY>
+        </itemList>
+	
+        <itemList>
+            <statnId>1075075219</statnId>
+            <updnLineSe>0</updnLineSe>
+            <trainAt>0</trainAt>
+            <directAt>0</directAt>
+            <imgLoc>1</imgLoc>
+            <statnX>1876</statnX>
+            <statnY>1393</statnY>
+        </itemList>
+	
+        <itemList>
+            <statnId>1075075221</statnId>
+            <updnLineSe>0</updnLineSe>
+            <trainAt>1</trainAt>
+            <directAt>0</directAt>
+            <imgLoc>1</imgLoc>
+            <statnX>2027</statnX>
+            <statnY>1359</statnY>
+        </itemList>
+	
+        <itemList>
+            <statnId>1075075227</statnId>
+            <updnLineSe>0</updnLineSe>
+            <trainAt>1</trainAt>
+            <directAt>0</directAt>
+            <imgLoc>2</imgLoc>
+            <statnX>2134</statnX>
+            <statnY>1590</statnY>
+        </itemList>
+	
+        <itemList>
+            <statnId>1075075230</statnId>
+            <updnLineSe>1</updnLineSe>
+            <trainAt>1</trainAt>
+            <directAt>0</directAt>
+            <imgLoc>5</imgLoc>
+            <statnX>1975</statnX>
+            <statnY>1588</statnY>
+        </itemList>
+	
+        <itemList>
+            <statnId>1075075222</statnId>
+            <updnLineSe>1</updnLineSe>
+            <trainAt>1</trainAt>
+            <directAt>0</directAt>
+            <imgLoc>6</imgLoc>
+            <statnX>2207</statnX>
+            <statnY>1359</statnY>
+        </itemList>
+	
+        <itemList>
+            <statnId>1075075238</statnId>
+            <updnLineSe>0</updnLineSe>
+            <trainAt>0</trainAt>
+            <directAt>0</directAt>
+            <imgLoc>2</imgLoc>
+            <statnX>1562</statnX>
+            <statnY>1631</statnY>
+        </itemList>
+	
+        <itemList>
+            <statnId>1075075228</statnId>
+            <updnLineSe>1</updnLineSe>
+            <trainAt>1</trainAt>
+            <directAt>0</directAt>
+            <imgLoc>5</imgLoc>
+            <statnX>2083</statnX>
+            <statnY>1590</statnY>
+        </itemList>
+	
+    </msgBody>
+    
+<!--
+    XML 파일 생성
+-->
