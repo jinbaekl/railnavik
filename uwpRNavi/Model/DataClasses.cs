@@ -194,4 +194,21 @@ namespace uwpRNavi.Model
     class Train
     {
     }
+
+    public class Journey
+    {
+        public int overallTravelTimeInSec { get; set; }
+        public int overallTravelTimeInSecAvg { get; set; }
+        public int overallTravelDistance { get; set; }
+        public int overallNumStations { get; set; }
+        public int overallNumTransfers { get; set; }
+        public int overallTransferTimeSec { get; set; }
+
+        public List<JourneyStation> Stations { get; set; }
+    }
+
+    public class JourneyStation
+    {
+        
+    }
 }

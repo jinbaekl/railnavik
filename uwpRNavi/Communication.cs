@@ -142,7 +142,8 @@ namespace uwpRNavi
                            arvlMsg3 = (string)query.Element("arvlMsg3"),
                            bStatnNm = (string)query.Element("bStatnNm"),
                            bTrainNo = (string)query.Element("bTrainNo"),
-                           cStatnNm = (string)query.Element("cStatnNm")
+                           cStatnNm = (string)query.Element("cStatnNm"),
+                           updnLine = (string)query.Element("updnLine")
                        };
             return data.ToArray();
         }
@@ -151,6 +152,44 @@ namespace uwpRNavi
         {
             var resp = await Get(proc + "?do=alert");
             return resp.Content;
+        }
+
+        public static async Task<JToken> GetToiletStation(Windows.Devices.Geolocation.BasicGeoposition pos)
+        {
+            var resp = await Get(proc + string.Format("?do=toilet&regkey={0}&lat={1}&long={2}", regkey, pos.Latitude, pos.Longitude));
+            if (resp.IsJson)
+            {
+                return resp.Json["result"];
+            }
+            return null;
+        }
+
+        public static async Task<List<NavTodo>> GetSimpleRoute(string start, string end, DateTime dt, int type)
+        {
+            List<NavTodo> lsnt = new List<NavTodo>();
+            var resp = await Get(proc + string.Format("?do=simpleroute&start={0}&end={1}&day={2}&type={3}&when={4}", start, end, StaticStore.GetWeek(dt), type, dt.ToString("yyyyMMddHHmm")+"00"));
+            if (resp.IsJson)
+            {
+                try
+                {
+                    var paths = resp.Json["result"]["subwayPaths"][0]["path"]["routes"].Children();
+                    foreach(var p in paths)
+                    {
+                        lsnt.Add(new NavTodo() { Label = string.Format("{0} 탑승",(string)p["logicalLine"]["name"]), Sublabel = string.Format("{0} 방면", (string)p["logicalLine"]["direction"]), Type = NavEnumTodo.Transfer });
+                        foreach (var q in p["stations"])
+                        {
+                            lsnt.Add(new NavTodo() { Label = (string)q["name"], Sublabel = string.Format("{0}:{1}", ((string)q["departureTime"]).Substring(0, 2), ((string)q["departureTime"]).Substring(2, 2)), Type = NavEnumTodo.Ride });
+                        }
+                    }
+                    return lsnt;
+                }
+                catch
+                {
+                    StaticStore.ShowToastNotification("올바르지 않은 탐색", "탐색 결과가 없습니다.");
+                    return null;
+                }
+            }
+            return null;
         }
     }
 }

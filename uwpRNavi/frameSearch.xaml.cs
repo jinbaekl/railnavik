@@ -32,6 +32,20 @@ namespace uwpRNavi
             
         }
 
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+
+            if(asbFrom.Text.Length == 0)
+            {
+                asbFrom.ItemsSource = StaticStore.LastNearStation.ToList();
+            }
+            if (asbTo.Text.Length == 0)
+            {
+                asbTo.ItemsSource = StaticStore.LastNearStation.ToList();
+            }
+        }
+
         private void cbOption_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (tpTime != null)
@@ -103,6 +117,29 @@ namespace uwpRNavi
                     sender.ItemsSource = lsSS;
                 }
             }
+        }
+
+        private async void btnSearch_Click(object sender, RoutedEventArgs e)
+        {
+            DateTime target = DateTime.Now;
+            if(dpDate.Visibility == Visibility.Visible)
+            {
+                target = dpDate.Date.DateTime;
+            }
+            if(tpTime.Visibility == Visibility.Visible)
+            {
+                target += tpTime.Time;
+            }
+
+            var lst = await Communication.GetSimpleRoute(asbFrom.Text, asbTo.Text, target, 1);
+            lvResult1.ItemsSource = lst;
+            lst = await Communication.GetSimpleRoute(asbFrom.Text, asbTo.Text, target, 2);
+            lvResult2.ItemsSource = lst;
+        }
+
+        private void pvSearchResult_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            
         }
     }
 }

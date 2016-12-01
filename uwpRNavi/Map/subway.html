@@ -6,6 +6,11 @@
     <title>Subway Seoul</title>
 </head>
 <body>
-    <img src="seoulsubway.png"/>
+    <script>
+        function test() {
+            window.external.notify(event.offsetX + "," + event.offsetY);
+        }
+    </script>
+    <img src="seoulsubway.png" onclick="test()"/>
 </body>
 </html>

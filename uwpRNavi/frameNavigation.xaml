@@ -52,11 +52,12 @@
             <StackPanel Orientation="Horizontal">
                 <Button Background="Transparent" Padding="10">
                     <Button.Flyout>
-                        <Flyout>
-                            <ListView Width="150" Height="200" HorizontalContentAlignment="Stretch" ItemTemplate="{StaticResource dtStation}">
-                                <ListBoxItem/>
-                                <ListBoxItem/>
-                            </ListView>
+                        <Flyout Opened="Flyout_Opened">
+                            <StackPanel>
+                                <ListView x:Name="lvToilet" Width="300" Height="200" HorizontalContentAlignment="Stretch" ItemTemplate="{StaticResource dtStation}">
+                                </ListView>
+                                <TextBlock x:Name="tbErrorToilet" Text="위치가 올바르지 않아 제안할 수 없습니다." Visibility="Collapsed"/>
+                            </StackPanel>
                         </Flyout>
                     </Button.Flyout>
                     <StackPanel>

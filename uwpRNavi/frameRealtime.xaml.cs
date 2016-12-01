@@ -47,6 +47,8 @@ namespace uwpRNavi
             }
         }
 
+
+
         private async void Page_Loaded(object sender, RoutedEventArgs e)
         {
             asbStation.ItemsSource = ocStation;
@@ -58,7 +60,14 @@ namespace uwpRNavi
 
                 // Carry out the operation.
                 Geoposition pos = await geolocator.GetGeopositionAsync();
-
+                if(!pos.Coordinate.Point.Position.Latitude.InRange(36.602917, 38.242152) || !pos.Coordinate.Point.Position.Longitude.InRange(126.301692, 128.164636))
+                {
+                    prLoading.IsActive = false;
+                    prLoading.Visibility = Visibility.Collapsed;
+                    StaticStore.ShowToastNotification("RailNavi 위치 특정 불가", "위치를 특정할 수 없습니다. 직접 역을 지정하세요.");
+                    return;
+                }
+                StaticStore.LastPos = pos.Coordinate.Point.Position;
                 var stations = await Communication.GetNearestStation(pos.Coordinate.Point.Position);
                 if (stations != null)
                 {
@@ -80,6 +89,12 @@ namespace uwpRNavi
                     selected = ocStation[0];
                     RealtimePos(ocStation[0]);
                 }
+            }
+            else
+            {
+                prLoading.IsActive = false;
+                prLoading.Visibility = Visibility.Collapsed;
+                StaticStore.ShowToastNotification("RailNavi 위치 특정 불가", "위치를 특정할 수 없습니다. 직접 역을 지정하세요.");
             }
             lvNow.ItemsSource = ocRS;
         }
